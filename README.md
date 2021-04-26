@@ -64,13 +64,13 @@ Just abans de començar a fer algun canvi, caldrà que:
    git add .
    ```
 
-     I si només vols penjar alguns fitxers (no crec que ho facis molt però aixi ja ho saps)
+     I si només vols penjar alguns fitxers (no crec que ho facis molt però aixi ja ho saps) ***no has de posar les cometes***
 
    ```bash
-   git add "nom dels fitxers que vulguis afegir, separats per un espai"
+   git add "nom dels fitxers que vulguis afegir, separats per un espai" 
    ```
 
-6. Un cop has fet el add, fer
+6. Un cop has fet el add, fer (*aqui si que hi van cometes*)
 
    ``` bash
    git commit -m "missatge indicant els canvis que has fet (tampoc cal que t'ho curris molt)"
@@ -118,9 +118,11 @@ Crec que no em deixo res :sunflower:
 
 
 
-#### Classe Llista :warning:
+#### Classe Llista :on:
 
-No faig llista del que falta perquè s'ha de fer pràcticament tota
+- [ ] Cal afegir totes les exceptions
+- [ ] Mirar el toString (nose com printar-ho)
+- [ ] Nose si cal moure algun mètode a les llistes particulars de cada classe
 
 
 
@@ -130,9 +132,10 @@ No faig llista del que falta perquè s'ha de fer pràcticament tota
 
 
 
-#### Classe Controlador :warning:
+#### Classe Controlador :on:
 
-No faig llista; està començada però crec que és del últim que hem de fer
+- [ ] Mirar com borrar una comanda; no tenen id ni res
+- [ ] Revisar-ho tot perquè crec q hi ha bastantes coses malament
 
 
 

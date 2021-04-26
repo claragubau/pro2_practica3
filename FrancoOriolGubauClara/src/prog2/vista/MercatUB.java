@@ -128,7 +128,7 @@ public class MercatUB {
                                 break;
                             case M_Opcio_2_Visualitzar_Article:
                                 try {
-                                    controlador.visualitzarArticle();
+                                    System.out.print(controlador.visualitzarArticle());
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
@@ -152,8 +152,10 @@ public class MercatUB {
                                 String correuElectrClient = sc.nextLine();
                                 System.out.print("Correu postal del client: ");
                                 String correuPostalClient = sc.nextLine();
+                                System.out.print("Tipus de client (estàndard o premium): ");
+                                String tipusClient = sc.nextLine();
                                 try {
-                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient);
+                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, tipusClient);
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
@@ -178,9 +180,20 @@ public class MercatUB {
                         opcioComandes = menuComandes.getOpcio(sc);
                         switch (opcioComandes) {
                             case M_Opcio_1_Afegir_Comanda:
-                                System.out.print("afegir comanda");
+                                System.out.print("Correu electrònic del client: ");
+                                String correuClient = sc.nextLine();
+                                System.out.print("Identificador de l'article: ");
+                                String idArticle = sc.nextLine();
+                                System.out.print("Quantitat d'unitats de l'article: ");
+                                int quantitat = sc.nextInt();
+                                System.out.print("Es tracta d'una comanda urgent? (si/no) ");
+                                String aux = sc.next();
+                                boolean enviamentUrgentArticle;
+                                enviamentUrgentArticle = aux.equals("si");
+                                controlador.afegirComanda(correuClient, idArticle, quantitat, enviamentUrgentArticle);
                                 break;
                             case M_Opcio_2_Esborrar_Comanda:
+                                // TODO d'alguna manera hem de referenciar les comandes
                                 System.out.print("esborrar comanda");
                                 break;
                             case M_Opcio_3_Visualitzar_Comanda:

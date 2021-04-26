@@ -9,42 +9,89 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import prog2.vista.MercatException;
 
+/**
+ * Classe Llista
+ * @param <T> tipus
+ */
 public class Llista<T> implements Serializable {
    protected ArrayList<T> llista;
 
-   public Llista() {        
-       llista = new ArrayList<>();
-    }
+    /**
+     * Constructor classe Llista
+     */
+   public Llista() {
+       this.llista = new ArrayList<T>();
+   }
 
-    public int getSize() {
-          // TO-BE-DONE
-        return 0;
-    }
+    /**
+    * Mètode per obtenir la mida de la llista
+    * @return int
+    */
 
-    public void afegir(T t) throws MercatException {
-          // TO-BE-DONE
-    }
+   public int getSize() {
+       return llista.size();
+   }
 
-    public void esborrar(T t) {
-          // TO-BE-DONE
-    }
-    
-    public T getAt(int position) {
-          // TO-BE-DONE
-        return null;
-    }
+    /**
+     * Mètode per afegir un element a la llista
+     * @param t T
+     * @throws MercatException TODO
+     */
+   public void afegir(T t) throws MercatException {
+       llista.add(t);
+   }
 
-    public void clear() {
-          // TO-BE-DONE
-    }
-    
-    public boolean isEmpty() {
-          // TO-BE-DONE
-        return false;
-    }
+    /**
+     * Mètode per esborrar un element de la llista
+     * @param t T
+     */
+   public void esborrar(T t) {
+       llista.remove(t);
+   }
 
-    public ArrayList<T> getArrayList() {
-        ArrayList<T> arrlist = new ArrayList<>(llista);
-        return arrlist;
+    /**
+     * Mètode per obtenir un element segons la posició
+     * @param position int
+     * @return element
+     */
+   public T getAt(int position) {
+       return llista.get(position);
+   }
+
+    /**
+     * Mètode per buidar la llista
+     */
+   public void clear() {
+       llista.clear();
+   }
+
+    /**
+     * Mètode per comprovar que la llista no sigui buida
+     * @return boolean
+     */
+   public boolean isEmpty() {
+       return getSize() == 0;
+   }
+
+
+    /**
+     * Getter de la llista
+     * @return ArrayList<T>
+     */
+   public ArrayList<T> getArrayList() {
+       return new ArrayList<>(llista);
+   }
+
+    /**
+     * Mètode toString
+     * @return String
+     */
+    @Override
+    public String toString() {
+        String result = "";
+        for (T t : llista){
+            result += t.toString() + "\n";
+        }
+        return result;
     }
 }

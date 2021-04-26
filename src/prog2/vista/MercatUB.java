@@ -96,133 +96,113 @@ public class MercatUB {
             menuMercat.mostrarMenu();
             opcioMenu = menuMercat.getOpcio(sc);
 
-            switch (opcioMenu){
-                case M_Opcio_1_Gestio_Articles:
+            switch (opcioMenu) {
+                case M_Opcio_1_Gestio_Articles -> {
                     Menu<OpcionsMenuArticles> menuArticles = new Menu<>("Menu gestio articles",
                             OpcionsMenuArticles.values());
-
                     menuArticles.setDescripcions(descMenuArticles);
                     OpcionsMenuArticles opcioArticles;
-
-                    do{
+                    do {
                         menuArticles.mostrarMenu();
                         opcioArticles = menuArticles.getOpcio(sc);
-                        switch (opcioArticles){
+                        switch (opcioArticles) {
                             case M_Opcio_1_Afegir_Article:
-                                System.out.println("Identificador de l'article: ");
+                                System.out.print("Identificador de l'article: ");
                                 String idArticle = sc.nextLine();
-                                System.out.println("Nom de l'article:");
+                                System.out.print("Nom de l'article: ");
                                 String nomArticle = sc.nextLine();
-                                System.out.println("Preu article: ");
+                                System.out.print("Preu article: ");
                                 float preuArticle = sc.nextFloat();
-                                System.out.println("Temps d'enviament de l'article (en minuts): ");
+                                System.out.print("Temps d'enviament de l'article (en minuts): ");
                                 int tempsArticle = sc.nextInt();
-                                System.out.println("Es tracta d'un enviament urgent? (si/no) ");
-                                String aux = sc.nextLine();
+                                System.out.print("Es tracta d'un enviament urgent? (si/no) ");
+                                String aux = sc.next();
                                 boolean enviamentUrgentArticle;
-                                if(aux.equals("si")) {
-                                    enviamentUrgentArticle = true;
-                                }else{
-                                    enviamentUrgentArticle = false;
-                                }
+                                enviamentUrgentArticle = aux.equals("si");
                                 try {
                                     controlador.afegirArticle(idArticle, nomArticle, preuArticle,
                                             tempsArticle, enviamentUrgentArticle);
-                                }catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                             case M_Opcio_2_Visualitzar_Article:
-                                try{
+                                try {
                                     controlador.visualitzarArticle();
-                                }catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                         }
-                    }while(opcioArticles != OpcionsMenuArticles.M_Opcio_3_Sortir);
-                    break;
-
-                case M_Opcio_2_Gestio_Clients:
+                    } while (opcioArticles != OpcionsMenuArticles.M_Opcio_3_Sortir);
+                }
+                case M_Opcio_2_Gestio_Clients -> {
                     Menu<OpcionsMenuClients> menuClients = new Menu<>("Menu gestio clients",
                             OpcionsMenuClients.values());
-
                     menuClients.setDescripcions(descMenuClients);
                     OpcionsMenuClients opcioClients;
-
-                    do{
+                    do {
                         menuClients.mostrarMenu();
                         opcioClients = menuClients.getOpcio(sc);
-                        switch (opcioClients){
+                        switch (opcioClients) {
                             case M_Opcio_1_Afegir_Client:
-                                System.out.println("Nom del client: ");
-                                String nomClient = sc.next();
-                                System.out.println("Correu electrònic del client: ");
+                                System.out.print("Nom del client: ");
+                                String nomClient = sc.nextLine();
+                                System.out.print("Correu electrònic del client: ");
                                 String correuElectrClient = sc.nextLine();
-                                System.out.println("Correu postal del client: ");
+                                System.out.print("Correu postal del client: ");
                                 String correuPostalClient = sc.nextLine();
-
-                                try{
+                                try {
                                     controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient);
-                                } catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                             case M_Opcio_2_Visualitzar_Clients:
                                 try {
                                     controlador.visualitzarClients();
-                                } catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                         }
-                    }while(opcioClients != OpcionsMenuClients.M_Opcio_3_Sortir);
-                    break;
-
-                case M_Opcio_3_Gestio_Comandes:
+                    } while (opcioClients != OpcionsMenuClients.M_Opcio_3_Sortir);
+                }
+                case M_Opcio_3_Gestio_Comandes -> {
                     Menu<OpcionsMenuComandes> menuComandes = new Menu<>("Menu gestio comandes",
                             OpcionsMenuComandes.values());
-
                     menuComandes.setDescripcions(descMenuComandes);
                     OpcionsMenuComandes opcioComandes;
-
-                    do{
+                    do {
                         menuComandes.mostrarMenu();
                         opcioComandes = menuComandes.getOpcio(sc);
-                        switch (opcioComandes){
+                        switch (opcioComandes) {
                             case M_Opcio_1_Afegir_Comanda:
-                                System.out.println("afegir comanda");
+                                System.out.print("afegir comanda");
                                 break;
                             case M_Opcio_2_Esborrar_Comanda:
-                                System.out.println("esborrar comanda");
+                                System.out.print("esborrar comanda");
                                 break;
                             case M_Opcio_3_Visualitzar_Comanda:
-                                try{
+                                try {
                                     controlador.visualitzarComandes();
-                                }catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                             case M_Opcio_4_Visualitzar_Comandes_Urgents:
                                 try {
                                     controlador.visualitzarComandesUrgents();
-                                } catch (MercatException e){
-                                    System.out.println(e.getMessage());
+                                } catch (MercatException e) {
+                                    System.out.print(e.getMessage());
                                 }
                                 break;
                         }
-                    }while(opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);
-                    break;
-
-                case M_Opcio_4_Guardar_Dades:
-                    System.out.println("guardar dades");
-                    break;
-
-                case M_Opcio_5_Carregar_Dades:
-                    System.out.println("carregar dades");
-                    break;
+                    } while (opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);
+                }
+                case M_Opcio_4_Guardar_Dades -> System.out.print("guardar dades");
+                case M_Opcio_5_Carregar_Dades -> System.out.print("carregar dades");
             }
         }while(opcioMenu != OpcionsMenu.M_Opcio_6_Sortir);
-
     }
 }

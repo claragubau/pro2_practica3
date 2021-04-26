@@ -11,8 +11,8 @@ public class ClientPremium extends Client{
      * @param nom String nom
      * @param correuPostal String correu postal
      */
-    public ClientPremium(String correuElectronic, String nom, String correuPostal) {
-        super(correuElectronic, nom, correuPostal);
+    public ClientPremium(String nom, String correuElectronic, String correuPostal) {
+        super(nom, correuElectronic, correuPostal);
     }
 
     /**

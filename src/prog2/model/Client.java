@@ -14,7 +14,7 @@ public abstract class Client {
      * @param nom String nom
      * @param correuPostal String correu postal
      */
-    protected Client(String correuElectronic, String nom, String correuPostal) {
+    protected Client(String nom, String correuElectronic, String correuPostal) {
         this.correuElectronic = correuElectronic;
         this.nom = nom;
         this.correuPostal = correuPostal;

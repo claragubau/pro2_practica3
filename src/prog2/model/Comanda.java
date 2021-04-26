@@ -30,7 +30,7 @@ public abstract class Comanda {
      * @return float
      */
     public float calcPreu(){
-        return 0f;
+        return article.getPreu()*quantitat+preuEnviament();
     }
 
     /**

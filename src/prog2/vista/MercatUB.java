@@ -109,10 +109,35 @@ public class MercatUB {
                         opcioArticles = menuArticles.getOpcio(sc);
                         switch (opcioArticles){
                             case M_Opcio_1_Afegir_Article:
-                                System.out.println("afegir article");
+                                System.out.println("Identificador de l'article: ");
+                                String idArticle = sc.nextLine();
+                                System.out.println("Nom de l'article:");
+                                String nomArticle = sc.nextLine();
+                                System.out.println("Preu article: ");
+                                float preuArticle = sc.nextFloat();
+                                System.out.println("Temps d'enviament de l'article (en minuts): ");
+                                int tempsArticle = sc.nextInt();
+                                System.out.println("Es tracta d'un enviament urgent? (si/no) ");
+                                String aux = sc.nextLine();
+                                boolean enviamentUrgentArticle;
+                                if(aux.equals("si")) {
+                                    enviamentUrgentArticle = true;
+                                }else{
+                                    enviamentUrgentArticle = false;
+                                }
+                                try {
+                                    controlador.afegirArticle(idArticle, nomArticle, preuArticle,
+                                            tempsArticle, enviamentUrgentArticle);
+                                }catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                             case M_Opcio_2_Visualitzar_Article:
-                                System.out.println("visualitzar article");
+                                try{
+                                    controlador.visualitzarArticle();
+                                }catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                         }
                     }while(opcioArticles != OpcionsMenuArticles.M_Opcio_3_Sortir);
@@ -130,10 +155,25 @@ public class MercatUB {
                         opcioClients = menuClients.getOpcio(sc);
                         switch (opcioClients){
                             case M_Opcio_1_Afegir_Client:
-                                System.out.println("afegir client");
+                                System.out.println("Nom del client: ");
+                                String nomClient = sc.next();
+                                System.out.println("Correu electrònic del client: ");
+                                String correuElectrClient = sc.nextLine();
+                                System.out.println("Correu postal del client: ");
+                                String correuPostalClient = sc.nextLine();
+
+                                try{
+                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient);
+                                } catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                             case M_Opcio_2_Visualitzar_Clients:
-                                System.out.println("visualitzar client");
+                                try {
+                                    controlador.visualitzarClients();
+                                } catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                         }
                     }while(opcioClients != OpcionsMenuClients.M_Opcio_3_Sortir);

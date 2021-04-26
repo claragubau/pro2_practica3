@@ -47,6 +47,6 @@ public class ComandaUrgent extends Comanda {
      * @return float
      */
     public float preuEnviament() {
-        return 0;
+        return 4;
     }
 }

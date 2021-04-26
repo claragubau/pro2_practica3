@@ -1,8 +1,8 @@
 # PRACTICA 3
 
-Hola franco <3
+Hola franco :yum:
 
-### Descarrega
+### Descarrega :arrow_down:
 
 Abans de res, hauries de tenir Git descarregat
 
@@ -24,7 +24,7 @@ Un cop fet això, ja tens el projecte amb els canvis que he fet jo. **Només cal
 
 
 
-### Abans de començar
+### Abans de començar :alarm_clock:
 
 Just abans de començar a fer algun canvi, caldrà que:
 
@@ -44,7 +44,7 @@ Just abans de començar a fer algun canvi, caldrà que:
 
 
 
-### Penjar els canvis
+### Penjar els canvis :arrow_up:
 
 1. Obrir Git
 
@@ -82,8 +82,68 @@ Just abans de començar a fer algun canvi, caldrà que:
    git push
    ```
 
-I.......... ja tindras el projecte actualizaooooooooooo!!!!!!!!
+I.......... ja tindras el projecte actualizaooooooooooo!!!!!!!! :tada:
 
 
 
-Crec que no em deixo res :)
+Crec que no em deixo res :sunflower:
+
+# LA PRÀCTICA:heavy_exclamation_mark:
+
+### TODO
+
+#### Classe Articles :on:
+
+- [ ] Identificador ha de ser únic
+
+
+
+#### Classe Clients :on:
+
+- [ ] Identificar de manera unívoca pel correu electrònic
+- [ ] Clients estàndards no paguen mensualitat
+- [ ] Clients prèmium paguen 4€ al mes; reben 20% de descompte en les despeses d'enviament
+- [ ] Falta acabar de mirar si es calculen be les quotes
+
+
+
+#### Classe Comandes :on:
+
+- [ ] Pensar com s'han de demanar per pantalla les comandes
+- [ ] Guardar data en què la comanda va ser realitzada
+- [ ] Com gestionar lo del temps fins l'enviament :warning:
+  - [ ] *"cada comanda té un temps fins l'enviament donat per la data de creació de la mateixa i el temps d'enviament de l'article. La comanda urgent triga la meitat d'aquest temps a enviar-se. D'altra banda, un cop enviat, una comanda té un temps fins a la recepció. Es triga 2 dies a rebre la comanda normal i 1 dia la comanda urgent"*
+- [ ] Com va lo de cancel·lar les comandes
+- [ ] No sé què és el mètode getTime (*"permet obtenir la data associada a un objecte de tipus Date"*)
+
+
+
+#### Classe Llista :warning:
+
+No faig llista del que falta perquè s'ha de fer pràcticament tota
+
+
+
+#### Classe Dades :warning:
+
+No faig llista del que falta perquè s'ha de fer pràcticament tota
+
+
+
+#### Classe Controlador :warning:
+
+No faig llista; està començada però crec que és del últim que hem de fer
+
+
+
+#### Classe MercatException :question:
+
+Te'n vas encarregar tu a la pràctica anterior, no sé exactament com va
+
+
+
+#### Classe IniciadorMercatUB :white_check_mark:
+
+#### Classe MercatUB :on:
+
+S'ha d'anar fent sobre la marxa també, però està començada.

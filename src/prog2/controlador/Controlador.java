@@ -28,8 +28,16 @@ public class Controlador {
         return "llista clients";
     }
 
-    public void afegirComanda(Article article, Client client, int quantitat, Date dataComanda){
+    public void afegirComanda(Article article, Client client, int quantitat, Date dataComanda) throws MercatException{
 
+    }
+
+    public String visualitzarComandes() throws MercatException{
+        return "llista comandes realitzades";
+    }
+
+    public String visualitzarComandesUrgents() throws MercatException{
+        return "llista comandes urgents";
     }
 
 

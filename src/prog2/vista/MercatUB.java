@@ -197,10 +197,18 @@ public class MercatUB {
                                 System.out.println("esborrar comanda");
                                 break;
                             case M_Opcio_3_Visualitzar_Comanda:
-                                System.out.println("visualitzar comanda");
+                                try{
+                                    controlador.visualitzarComandes();
+                                }catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                             case M_Opcio_4_Visualitzar_Comandes_Urgents:
-                                System.out.println("visualitzar comandes urgents");
+                                try {
+                                    controlador.visualitzarComandesUrgents();
+                                } catch (MercatException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                         }
                     }while(opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);

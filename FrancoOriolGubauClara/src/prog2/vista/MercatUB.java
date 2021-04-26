@@ -92,12 +92,12 @@ public class MercatUB {
         menuMercat.setDescripcions(descMenu);
         OpcionsMenu opcioMenu;
 
-        do{
+        do {
             menuMercat.mostrarMenu();
             opcioMenu = menuMercat.getOpcio(sc);
 
             switch (opcioMenu) {
-                case M_Opcio_1_Gestio_Articles -> {
+                case M_Opcio_1_Gestio_Articles:
                     Menu<OpcionsMenuArticles> menuArticles = new Menu<>("Menu gestio articles",
                             OpcionsMenuArticles.values());
                     menuArticles.setDescripcions(descMenuArticles);
@@ -135,8 +135,8 @@ public class MercatUB {
                                 break;
                         }
                     } while (opcioArticles != OpcionsMenuArticles.M_Opcio_3_Sortir);
-                }
-                case M_Opcio_2_Gestio_Clients -> {
+                    break;
+                case M_Opcio_2_Gestio_Clients:
                     Menu<OpcionsMenuClients> menuClients = new Menu<>("Menu gestio clients",
                             OpcionsMenuClients.values());
                     menuClients.setDescripcions(descMenuClients);
@@ -167,8 +167,8 @@ public class MercatUB {
                                 break;
                         }
                     } while (opcioClients != OpcionsMenuClients.M_Opcio_3_Sortir);
-                }
-                case M_Opcio_3_Gestio_Comandes -> {
+                    break;
+                case M_Opcio_3_Gestio_Comandes:
                     Menu<OpcionsMenuComandes> menuComandes = new Menu<>("Menu gestio comandes",
                             OpcionsMenuComandes.values());
                     menuComandes.setDescripcions(descMenuComandes);
@@ -199,9 +199,13 @@ public class MercatUB {
                                 break;
                         }
                     } while (opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);
-                }
-                case M_Opcio_4_Guardar_Dades -> System.out.print("guardar dades");
-                case M_Opcio_5_Carregar_Dades -> System.out.print("carregar dades");
+                    break;
+                case M_Opcio_4_Guardar_Dades:
+                    System.out.print("guardar dades");
+                    break;
+                case M_Opcio_5_Carregar_Dades:
+                    System.out.print("carregar dades");
+                    break;
             }
         }while(opcioMenu != OpcionsMenu.M_Opcio_6_Sortir);
     }

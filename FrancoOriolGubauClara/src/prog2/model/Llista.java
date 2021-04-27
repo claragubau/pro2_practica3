@@ -82,16 +82,4 @@ public class Llista<T> implements Serializable {
        return new ArrayList<>(llista);
    }
 
-    /**
-     * Mètode toString
-     * @return String
-     */
-    @Override
-    public String toString() {
-        String result = "";
-        for (T t : llista){
-            result += t.toString() + "\n";
-        }
-        return result;
-    }
 }

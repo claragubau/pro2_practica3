@@ -7,12 +7,12 @@ public class ClientEstandard extends Client{
 
     /**
      * Constructor Client Estandard
-     * @param correuElectronic String correu electrònic
+     * @param email String correu electrònic
      * @param nom String nom
-     * @param correuPostal String correu postal
+     * @param adreca String correu postal
      */
-    public ClientEstandard(String nom, String correuElectronic, String correuPostal) {
-        super(nom, correuElectronic, correuPostal);
+    public ClientEstandard(String nom, String email, String adreca) {
+        super(nom, email, adreca);
     }
 
     /**

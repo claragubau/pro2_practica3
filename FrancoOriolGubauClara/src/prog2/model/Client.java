@@ -4,20 +4,20 @@ package prog2.model;
  * Classe abstracta client
  */
 public abstract class Client {
-    private String correuElectronic;
+    private String email;
     private String nom;
-    private String correuPostal;
+    private String adreca;
 
     /**
      * Constructor Client Premium
-     * @param correuElectronic String correu electrònic
+     * @param email String correu electrònic
      * @param nom String nom
-     * @param correuPostal String correu postal
+     * @param adreca String correu postal
      */
-    protected Client(String nom, String correuElectronic, String correuPostal) {
-        this.correuElectronic = correuElectronic;
+    protected Client(String nom, String email, String adreca) {
+        this.email = email;
         this.nom = nom;
-        this.correuPostal = correuPostal;
+        this.adreca = adreca;
     }
 
     /**
@@ -44,8 +44,8 @@ public abstract class Client {
      */
     @Override
     public String toString() {
-        return "Tipus=" + tipusClient() + ", Email=" + getCorreuElectronic() +
-                ", Nom=" + getNom() + ", Adreça=" + getCorreuPostal() +
+        return "Tipus=" + tipusClient() + ", Email=" + getEmail() +
+                ", Nom=" + getNom() + ", Adreça=" + getAdreca() +
                 ", Descompte Enviament=" + descompteEnv() + ", Mensualitat=" + calMensual();
     }
 
@@ -53,16 +53,16 @@ public abstract class Client {
      * Getter correu electronic
      * @return string amb el correu
      */
-    public String getCorreuElectronic() {
-        return correuElectronic;
+    public String getEmail() {
+        return email;
     }
 
     /**
      * Setter correu electronic
-     * @param correuElectronic string
+     * @param email string
      */
-    public void setCorreuElectronic(String correuElectronic) {
-        this.correuElectronic = correuElectronic;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -85,15 +85,15 @@ public abstract class Client {
      * Getter correu postal
      * @return String correu postal
      */
-    public String getCorreuPostal() {
-        return correuPostal;
+    public String getAdreca() {
+        return adreca;
     }
 
     /**
      * Setter correu postal
-     * @param correuPostal string
+     * @param adreca string
      */
-    public void setCorreuPostal(String correuPostal) {
-        this.correuPostal = correuPostal;
+    public void setAdreca(String adreca) {
+        this.adreca = adreca;
     }
 }

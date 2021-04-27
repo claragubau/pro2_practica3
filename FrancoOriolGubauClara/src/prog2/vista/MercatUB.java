@@ -152,17 +152,21 @@ public class MercatUB {
                                 String correuElectrClient = sc.nextLine();
                                 System.out.print("Correu postal del client: ");
                                 String correuPostalClient = sc.nextLine();
-                                System.out.print("Tipus de client (estàndard o premium): ");
+                                System.out.print("Tipus de client (estandard o premium): ");
                                 String tipusClient = sc.nextLine();
+                                boolean esPremium = true;
+                                if(tipusClient.equals("estandard")){
+                                    esPremium = false;
+                                }
                                 try {
-                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, tipusClient);
+                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, esPremium);
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
                                 break;
                             case M_Opcio_2_Visualitzar_Clients:
                                 try {
-                                    controlador.visualitzarClients();
+                                    System.out.println("mercat uuuuub" + controlador.visualitzarClients());
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
@@ -180,32 +184,32 @@ public class MercatUB {
                         opcioComandes = menuComandes.getOpcio(sc);
                         switch (opcioComandes) {
                             case M_Opcio_1_Afegir_Comanda:
-                                System.out.print("Correu electrònic del client: ");
-                                String correuClient = sc.nextLine();
-                                System.out.print("Identificador de l'article: ");
-                                String idArticle = sc.nextLine();
+                                System.out.print("Indica la posició del client a la llista: ");
+                                int clientPos = sc.nextInt();
+                                System.out.print("Indica la posició de l'article a la llista: ");
+                                int articlePos = sc.nextInt();
                                 System.out.print("Quantitat d'unitats de l'article: ");
                                 int quantitat = sc.nextInt();
                                 System.out.print("Es tracta d'una comanda urgent? (si/no) ");
                                 String aux = sc.next();
-                                boolean enviamentUrgentArticle;
-                                enviamentUrgentArticle = aux.equals("si");
-                                controlador.afegirComanda(correuClient, idArticle, quantitat, enviamentUrgentArticle);
+                                boolean enviamentUrgentArticle = aux.equals("si");;
+                                controlador.afegirComanda(clientPos, articlePos, quantitat, enviamentUrgentArticle);
                                 break;
                             case M_Opcio_2_Esborrar_Comanda:
-                                // TODO d'alguna manera hem de referenciar les comandes
-                                System.out.print("esborrar comanda");
+                                System.out.print("Indica la posició de la comanda que vols esborrar: ");
+                                int pos = sc.nextInt();
+                                controlador.esborrarComanda(pos);
                                 break;
                             case M_Opcio_3_Visualitzar_Comanda:
                                 try {
-                                    controlador.visualitzarComandes();
+                                    System.out.println(controlador.visualitzarComandes());
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
                                 break;
                             case M_Opcio_4_Visualitzar_Comandes_Urgents:
                                 try {
-                                    controlador.visualitzarComandesUrgents();
+                                    System.out.println(controlador.visualitzarComandesUrgents());
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }

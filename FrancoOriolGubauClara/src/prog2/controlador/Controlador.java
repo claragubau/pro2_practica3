@@ -3,22 +3,13 @@ package prog2.controlador;
 import prog2.model.*;
 import prog2.vista.MercatException;
 
-import java.util.Date;
-import java.util.Iterator;
+import java.util.List;
 
 /**
  * Classe Controlador
  */
 public class Controlador {
-    LlistaArticles llistaArticles;
-    LlistaClients llistaClients;
-    LlistaComandes llistaComandes;
-
-    public Controlador() {
-        this.llistaArticles = new LlistaArticles();
-        this.llistaComandes = new LlistaComandes();
-        this.llistaClients = new LlistaClients();
-    }
+    Dades dades = new Dades();
 
     /**
      * Mètode per afegir un article
@@ -31,8 +22,7 @@ public class Controlador {
      */
     public void afegirArticle(String id, String nom, float preu,
                               int tempsEnviament, boolean enviamentUrgent) throws MercatException {
-        Article article = new Article(id, nom, preu, tempsEnviament, enviamentUrgent);
-        llistaArticles.afegir(article);
+        dades.afegirArticle(id, nom, preu, tempsEnviament, enviamentUrgent);
     }
 
     /**
@@ -40,26 +30,20 @@ public class Controlador {
      * @return string
      * @throws MercatException TODO
      */
-    public String visualitzarArticle() throws MercatException{
-        return llistaArticles.toString();
+    public List<String> visualitzarArticle() throws MercatException{
+        return dades.recuperaArticles();
     }
 
     /**
      * Mètode per afegir un client
      * @param nom string
-     * @param correuElectronic string
-     * @param correuPostal string
-     * @param tipus string
+     * @param email string
+     * @param adreca string
+     * @param esPremium boolean
      * @throws MercatException TODO
      */
-    public void afegirClient(String nom, String correuElectronic, String correuPostal, String tipus) throws MercatException{
-        if(tipus.equals("estandard")){
-            ClientEstandard clientEs = new ClientEstandard(nom, correuElectronic, correuPostal);
-            llistaClients.afegir(clientEs);
-        }else if(tipus.equals("premium")){
-            ClientPremium clientPremium = new ClientPremium(nom, correuElectronic, correuPostal);
-            llistaClients.afegir(clientPremium);
-        }
+    public void afegirClient(String nom, String email, String adreca, boolean esPremium) throws MercatException{
+        dades.afegirClient(email, nom, adreca, esPremium);
     }
 
     /**
@@ -67,61 +51,47 @@ public class Controlador {
      * @return string
      * @throws MercatException TODO
      */
-    public String visualitzarClients() throws MercatException{
-        return llistaClients.toString();
+    public List<String> visualitzarClients() throws MercatException{
+        return dades.recuperaClients();
     }
 
 
     /**
      * Mètode per afegir una comanda
-     * @param correuClient string
-     * @param idArticle string
+     * @param articlePos int
+     * @param clientPos int
      * @param quantitat int
-     * @param urgent boolean
+     * @param esUrgent boolean
      * @throws MercatException TODO
      */
-    public void afegirComanda(String correuClient, String idArticle, int quantitat, boolean urgent) throws MercatException{
-        // trobar el client amb el seu correu (no hi ha un mètode per fer-ho)
-        // trobar l'article
-        // TODO CANVIAR TOTS ELS ARTICLES I CLIENTS AQUESTS
-        Article article = new Article("", "", 3, 600, false);
-        Client client = new ClientEstandard(" ", " ", " ");
-        Date date = new Date();
-        if(urgent){
-            ComandaUrgent comandaUrgent = new ComandaUrgent(article, client, quantitat, date);
-        }else{
-            ComandaNormal comandaNormal = new ComandaNormal(article, client, quantitat, date);
-        }
+    public void afegirComanda(int articlePos, int clientPos, int quantitat, boolean esUrgent) throws MercatException {
+        dades.afegirComanda(articlePos, clientPos, quantitat, esUrgent);
     }
 
     /**
      * Mètode per visualitzar les comandes
-     * @return string
+     * @return list<string>
      * @throws MercatException TODO
      */
-    public String visualitzarComandes() throws MercatException{
-        return llistaComandes.toString();
+    public List<String> visualitzarComandes() throws MercatException{
+        return dades.recuperaComandes();
     }
 
     /**
      * Mètode per visualitzar les comandes urgents
-     * @return string
+     * @return list<string>
      * @throws MercatException TODO
      */
-    public String visualitzarComandesUrgents() throws MercatException{
-        Iterator<Comanda> it = llistaComandes.getArrayList().iterator();
-        String resultat = " ";
-        while (it.hasNext()){
-            Comanda comanda = it.next();
-            if(comanda.tipusComanda().equals("Urgent")){
-                resultat += comanda.toString();
-            }
-        }
-        return resultat;
+    public List<String> visualitzarComandesUrgents() throws MercatException{
+        return dades.recuperaComandesUrgents();
     }
 
-    public void borrarComanda(Comanda comanda) {
-
-        llistaComandes.esborrar(comanda);
+    /**
+     * Mètode per esborrar una comanda
+     * @param position int posicio
+     * @throws MercatException TODO
+     */
+    public void esborrarComanda(int position) throws MercatException {
+        dades.esborrarComanda(position);
     }
 }

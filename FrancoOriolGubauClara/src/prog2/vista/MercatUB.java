@@ -166,7 +166,7 @@ public class MercatUB {
                                 break;
                             case M_Opcio_2_Visualitzar_Clients:
                                 try {
-                                    System.out.println("mercat uuuuub" + controlador.visualitzarClients());
+                                    System.out.println(controlador.visualitzarClients());
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }

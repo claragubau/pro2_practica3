@@ -3,6 +3,7 @@ package prog2.model;
 import prog2.vista.MercatException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,13 +40,14 @@ public class Dades implements InDades{
      * @return List<String>
      */
     public List<String> recuperaArticles() {
-        List<String> resultat = new ArrayList<>();
+        List<String> res = new ArrayList<>();
         Iterator it = llistaArticles.llista.iterator();
-        System.out.print(llistaArticles.llista.getClass().getSimpleName());
-/*        while(it.hasNext()){
-            resultat.add(it.toString());
-        }*/
-        return resultat;
+        int pos = 1;
+        while(it.hasNext()){
+            res.add("\n[" + String.valueOf(pos) + "]" + it.next().toString());
+            pos++;
+        }
+        return res;
     }
 
     /**
@@ -71,13 +73,14 @@ public class Dades implements InDades{
      * @return List<String>
      */
     public List<String> recuperaClients() {
-        List<String> resultat = new ArrayList<>();
-        System.out.println("dades" + llistaClients.llista.toString());
-/*        Iterator it = llistaClients.llista.iterator();
+        List<String> res = new ArrayList<>();
+        Iterator it = llistaClients.llista.iterator();
+        int pos = 1;
         while(it.hasNext()){
-            resultat.add(it.toString());
-        }*/
-        return resultat;
+            res.add("\n[" + String.valueOf(pos) + "]" + it.next().toString());
+            pos++;
+        }
+        return res;
     }
 
     /**
@@ -89,6 +92,14 @@ public class Dades implements InDades{
      * @throws MercatException TODO
      */
     public void afegirComanda(int articlePos, int clientPos, int quantitat, boolean esUrgent) throws MercatException {
+        Article article = llistaArticles.getAt(articlePos);
+        Client client = llistaClients.getAt(clientPos);
+        Date date = new Date();
+        if(esUrgent){
+            ComandaUrgent comandaUr = new ComandaUrgent(article, client, quantitat, date);
+        }else{
+            ComandaNormal comandaNormal = new ComandaNormal(article, client, quantitat, date);
+        }
 
     }
 
@@ -107,7 +118,14 @@ public class Dades implements InDades{
      * @return List<String>
      */
     public List<String> recuperaComandes() {
-        return null;
+        List<String> res = new ArrayList<>();
+        int pos = 1;
+        Iterator it = llistaComandes.llista.iterator();
+        while(it.hasNext()){
+            res.add("\n[" + String.valueOf(pos) + "]" + it.next().toString());
+            pos++;
+        }
+        return res;
     }
 
     /**
@@ -115,6 +133,16 @@ public class Dades implements InDades{
      * @return List<String>
      */
     public List<String> recuperaComandesUrgents() {
-        return null;
+        List<String> res = new ArrayList<>();
+        Iterator it = llistaComandes.llista.iterator();
+        int pos = 1;
+        while(it.hasNext()){
+            Comanda cmd = (Comanda) it.next();
+            if(cmd.tipusComanda().equals("urgent")){
+                res.add("\n[" + String.valueOf(pos) + "]" + cmd.toString());
+                pos++;
+            }
+        }
+        return res;
     }
 }

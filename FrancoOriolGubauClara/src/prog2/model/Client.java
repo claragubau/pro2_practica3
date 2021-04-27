@@ -46,7 +46,7 @@ public abstract class Client {
     public String toString() {
         return "Tipus=" + tipusClient() + ", Email=" + getEmail() +
                 ", Nom=" + getNom() + ", Adreça=" + getAdreca() +
-                ", Descompte Enviament=" + descompteEnv() + ", Mensualitat=" + calMensual();
+                ", Descompte Enviament=" + descompteEnv()*100 + ", Mensualitat=" + calMensual();
     }
 
     /**

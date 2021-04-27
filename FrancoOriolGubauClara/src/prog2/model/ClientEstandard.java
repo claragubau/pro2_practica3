@@ -6,13 +6,13 @@ package prog2.model;
 public class ClientEstandard extends Client{
 
     /**
-     * Constructor Client Estandard
-     * @param email String correu electrònic
+     * Constructor Client Premium
+     * @param correuElectronic String correu electrònic
      * @param nom String nom
-     * @param adreca String correu postal
+     * @param correuPostal String correu postal
      */
-    public ClientEstandard(String nom, String email, String adreca) {
-        super(nom, email, adreca);
+    public ClientEstandard(String nom, String correuElectronic, String correuPostal) {
+        super(nom, correuElectronic, correuPostal);
     }
 
     /**

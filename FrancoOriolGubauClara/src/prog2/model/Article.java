@@ -32,9 +32,9 @@ public class Article {
      */
     @Override
     public String toString() {
-        return "Id=" + getIdentificador() + ", Nom=" + getNom() + ", Preu="
-                + getPreu() + ", Temps fins enviament =" + getTempsEnviament() +
-                ", Enviament Urgent=" + isEnviamentUrgent();
+        return "Id = " + getIdentificador() + ", Nom = " + getNom() + ", Preu = "
+                + getPreu() + ", Temps fins enviament = " + getTempsEnviament() +
+                ", Enviament Urgent = " + isEnviamentUrgent();
     }
 
     /**

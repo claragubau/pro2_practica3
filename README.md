@@ -95,58 +95,49 @@ Crec que no em deixo res :sunflower:
 #### Classe Articles :on:
 
 - [ ] Identificador ha de ser únic
+- [ ] Fer excepcions
+- [ ] Revisar
 
 
 
 #### Classe Clients :on:
 
 - [ ] Identificar de manera unívoca pel correu electrònic
-- [ ] Clients estàndards no paguen mensualitat
-- [ ] Clients prèmium paguen 4€ al mes; reben 20% de descompte en les despeses d'enviament
 - [ ] Falta acabar de mirar si es calculen be les quotes
-
-
+- [ ] Fer excepcions
+- [ ] Revisar
 
 #### Classe Comandes :on:
 
-- [ ] Pensar com s'han de demanar per pantalla les comandes
-- [ ] Guardar data en què la comanda va ser realitzada
+- [ ] Guardar/recuperar la data que toqui (crec)
 - [ ] Com gestionar lo del temps fins l'enviament :warning:
   - [ ] *"cada comanda té un temps fins l'enviament donat per la data de creació de la mateixa i el temps d'enviament de l'article. La comanda urgent triga la meitat d'aquest temps a enviar-se. D'altra banda, un cop enviat, una comanda té un temps fins a la recepció. Es triga 2 dies a rebre la comanda normal i 1 dia la comanda urgent"*
-- [ ] Com va lo de cancel·lar les comandes
 - [ ] No sé què és el mètode getTime (*"permet obtenir la data associada a un objecte de tipus Date"*)
-
-
+- [ ] Fer excepcions
 
 #### Classe Llista :on:
 
-- [ ] Cal afegir totes les exceptions
-- [ ] Mirar el toString (nose com printar-ho)
-- [ ] Nose si cal moure algun mètode a les llistes particulars de cada classe
+- [ ] Fer excepcions
+- [ ] Revisar
 
+#### Classe Dades :on:
 
-
-#### Classe Dades :warning:
-
-No faig llista del que falta perquè s'ha de fer pràcticament tota
-
-
+- [ ] Revisar
+- [ ] Fer excepcions
+- [ ] Carregar i guardar no van be
 
 #### Classe Controlador :on:
 
-- [ ] Mirar com borrar una comanda; no tenen id ni res
-- [ ] Revisar-ho tot perquè crec q hi ha bastantes coses malament
-
-
+- [ ] Revisar
+- [ ] Fer excepcions
 
 #### Classe MercatException :question:
 
 Te'n vas encarregar tu a la pràctica anterior, no sé exactament com va
 
-
-
 #### Classe IniciadorMercatUB :white_check_mark:
 
 #### Classe MercatUB :on:
 
-S'ha d'anar fent sobre la marxa també, però està començada.
+- [ ] Revisar
+- [ ] Fer excepcions

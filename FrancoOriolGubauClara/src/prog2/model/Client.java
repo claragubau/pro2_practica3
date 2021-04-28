@@ -44,9 +44,9 @@ public abstract class Client {
      */
     @Override
     public String toString() {
-        return "Tipus=" + tipusClient() + ", Email=" + getEmail() +
-                ", Nom=" + getNom() + ", Adreça=" + getAdreca() +
-                ", Descompte Enviament=" + descompteEnv()*100 + ", Mensualitat=" + calMensual();
+        return "Tipus = " + tipusClient() + ", Email = " + getEmail() +
+                ", Nom = " + getNom() + ", Adreça = " + getAdreca() +
+                ", Descompte Enviament = " + descompteEnv()*100 + ", Mensualitat = " + calMensual();
     }
 
     /**

@@ -2,6 +2,7 @@ package prog2.model;
 
 import prog2.vista.MercatException;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Classe Dades
  */
-public class Dades implements InDades{
+public class Dades implements InDades, Serializable{
     Llista<Article> llistaArticles;
     Llista<Client> llistaClients;
     Llista<Comanda> llistaComandes;
@@ -97,8 +98,10 @@ public class Dades implements InDades{
         Date date = new Date();
         if(esUrgent){
             ComandaUrgent comandaUr = new ComandaUrgent(article, client, quantitat, date);
+            llistaComandes.afegir(comandaUr);
         }else{
             ComandaNormal comandaNormal = new ComandaNormal(article, client, quantitat, date);
+            llistaComandes.afegir(comandaNormal);
         }
 
     }
@@ -138,11 +141,32 @@ public class Dades implements InDades{
         int pos = 1;
         while(it.hasNext()){
             Comanda cmd = (Comanda) it.next();
-            if(cmd.tipusComanda().equals("urgent")){
+            if(cmd.tipusComanda().equals("Urgent")){
                 res.add("\n[" + String.valueOf(pos) + "]" + cmd.toString());
                 pos++;
             }
         }
         return res;
+    }
+
+    public void guardaDades(String camiDesti) throws MercatException, IOException {
+        File fitxer = new File(camiDesti);
+        FileOutputStream fout = new FileOutputStream(fitxer);
+
+        ObjectOutputStream oos = new ObjectOutputStream(fout);
+        oos.writeObject(this);
+        oos.close();
+        fout.close();
+    }
+
+    public final Dades carregaDades(String camiOrigen) throws MercatException, IOException, ClassNotFoundException {
+        File fitxer = new File(camiOrigen);
+        FileInputStream fin = new FileInputStream(fitxer);
+
+        ObjectInputStream ois = new ObjectInputStream(fin);
+        Dades dades = (Dades)ois.readObject();
+        ois.close();
+        fin.close();
+        return dades;
     }
 }

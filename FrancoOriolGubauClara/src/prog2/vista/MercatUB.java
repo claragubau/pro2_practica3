@@ -2,6 +2,7 @@ package prog2.vista;
 
 import prog2.controlador.Controlador;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -129,6 +130,7 @@ public class MercatUB {
                             case M_Opcio_2_Visualitzar_Article:
                                 try {
                                     System.out.print(controlador.visualitzarArticle());
+                                    System.out.print("\n");
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
                                 }
@@ -152,12 +154,10 @@ public class MercatUB {
                                 String correuElectrClient = sc.nextLine();
                                 System.out.print("Correu postal del client: ");
                                 String correuPostalClient = sc.nextLine();
-                                System.out.print("Tipus de client (estandard o premium): ");
-                                String tipusClient = sc.nextLine();
-                                boolean esPremium = true;
-                                if(tipusClient.equals("estandard")){
-                                    esPremium = false;
-                                }
+                                System.out.print("Es tracta d'un client premium? (si/no) ");
+                                String aux = sc.next();
+                                boolean esPremium;
+                                esPremium = aux.equals("si");
                                 try {
                                     controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, esPremium);
                                 } catch (MercatException e) {
@@ -218,9 +218,25 @@ public class MercatUB {
                     } while (opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);
                     break;
                 case M_Opcio_4_Guardar_Dades:
-                    System.out.print("guardar dades");
+                    System.out.print("Nom del fitxer on es volen guardar les dades: ");
+                    String nomFitxer = sc.nextLine();
+                    try {
+                        controlador.guardarMercat(nomFitxer);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case M_Opcio_5_Carregar_Dades:
+                    System.out.print("Nom del fitxer on hi ha les dades: ");
+                    nomFitxer = sc.nextLine();
+                    try {
+                        controlador.carregarMercat(nomFitxer);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
                     System.out.print("carregar dades");
                     break;
             }

@@ -3,6 +3,10 @@ package prog2.controlador;
 import prog2.model.*;
 import prog2.vista.MercatException;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 /**
@@ -65,7 +69,7 @@ public class Controlador {
      * @throws MercatException TODO
      */
     public void afegirComanda(int articlePos, int clientPos, int quantitat, boolean esUrgent) throws MercatException {
-        dades.afegirComanda(articlePos, clientPos, quantitat, esUrgent);
+        dades.afegirComanda(articlePos-1, clientPos-1, quantitat, esUrgent);
     }
 
     /**
@@ -92,6 +96,14 @@ public class Controlador {
      * @throws MercatException TODO
      */
     public void esborrarComanda(int position) throws MercatException {
-        dades.esborrarComanda(position);
+        dades.esborrarComanda(position-1);
+    }
+
+    public void guardarMercat(String camiDesti) throws IOException, MercatException {
+        dades.guardaDades(camiDesti);
+    }
+
+    public void carregarMercat(String camiOrigen) throws IOException, ClassNotFoundException, MercatException {
+        Dades carregades = dades.carregaDades(camiOrigen);
     }
 }

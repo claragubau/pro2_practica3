@@ -231,13 +231,12 @@ public class MercatUB {
                     nomFitxer = sc.nextLine();
                     try {
                         controlador.carregarMercat(nomFitxer);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-
-                    System.out.print("carregar dades");
                     break;
             }
         }while(opcioMenu != OpcionsMenu.M_Opcio_6_Sortir);

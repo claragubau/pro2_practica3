@@ -1,9 +1,11 @@
 package prog2.model;
 
+import java.io.Serializable;
+
 /**
  * Classe Client Estandard
  */
-public class ClientEstandard extends Client{
+public class ClientEstandard extends Client implements Serializable {
 
     /**
      * Constructor Client Premium

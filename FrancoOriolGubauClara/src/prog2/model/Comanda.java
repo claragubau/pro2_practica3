@@ -1,11 +1,12 @@
 package prog2.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Classe abstracta comanda
  */
-public abstract class Comanda {
+public abstract class Comanda implements Serializable {
     private Article article;
     private Client client;
     private int quantitat;

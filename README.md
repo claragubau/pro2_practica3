@@ -124,7 +124,6 @@ Crec que no em deixo res :sunflower:
 
 - [ ] Revisar
 - [ ] Fer excepcions
-- [ ] Carregar i guardar no van be
 
 #### Classe Controlador :on:
 

@@ -12,9 +12,9 @@ import java.util.List;
  * Classe Dades
  */
 public class Dades implements InDades, Serializable{
-    Llista<Article> llistaArticles;
-    Llista<Client> llistaClients;
-    Llista<Comanda> llistaComandes;
+    private Llista<Article> llistaArticles;
+    private Llista<Client> llistaClients;
+    private Llista<Comanda> llistaComandes;
 
     public Dades() {
         this.llistaArticles = new LlistaArticles();

@@ -104,6 +104,6 @@ public class Controlador {
     }
 
     public void carregarMercat(String camiOrigen) throws IOException, ClassNotFoundException, MercatException {
-        Dades carregades = dades.carregaDades(camiOrigen);
+        dades = dades.carregaDades(camiOrigen);
     }
 }

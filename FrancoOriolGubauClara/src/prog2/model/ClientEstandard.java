@@ -21,6 +21,7 @@ public class ClientEstandard extends Client implements Serializable {
      * Mètode per determinar el tipus de client
      * @return String tipus
      */
+    @Override
     public String tipusClient() {
         return "Estandard";
     }
@@ -29,14 +30,16 @@ public class ClientEstandard extends Client implements Serializable {
      * Mètode per calcular la mensualitat
      * @return float mensualitat
      */
+    @Override
     public float calcMensual() {
-        return 4;
+        return 0;
     }
 
     /**
      * Mêtode per calcular el descompte de l'enviament
      * @return float amb el descompte
      */
+    @Override
     public float descompteEnv() {
         return 0;
     }

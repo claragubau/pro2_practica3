@@ -31,7 +31,12 @@ public class ComandaUrgent extends Comanda {
      * @return boolean
      */
     public boolean comandaEnviada() {
-        return false;
+        Date dataActual = new Date();
+        if(dataActual.getTime() - dataComanda.getTime() < article.getTempsEnviament()*60*1000/2){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     /**
@@ -39,7 +44,16 @@ public class ComandaUrgent extends Comanda {
      * @return boolean
      */
     public boolean comandaRebuda() {
-        return false;
+        if(this.comandaEnviada()){
+            Date dataActual = new Date();
+            if(dataActual.getTime() - dataComanda.getTime() < article.getTempsEnviament()*60*1000 + 24*3600*1000){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
     }
 
     /**

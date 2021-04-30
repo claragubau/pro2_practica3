@@ -30,7 +30,7 @@ public class ClientPremium extends Client implements Serializable {
      * @return float mensualitat
      */
     public float calcMensual() {
-        return 0;
+        return 4;
     }
 
     /**

@@ -26,7 +26,11 @@ public class Controlador {
      */
     public void afegirArticle(String id, String nom, float preu,
                               int tempsEnviament, boolean enviamentUrgent) throws MercatException {
-        dades.afegirArticle(id, nom, preu, tempsEnviament, enviamentUrgent);
+        if (preu <= 0){
+            throw new MercatException("El preu ha de ser un valor positiu. No ens podem permetre perdues.");
+        }else{
+            dades.afegirArticle(id, nom, preu, tempsEnviament, enviamentUrgent);
+        }
     }
 
     /**

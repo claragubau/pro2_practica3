@@ -40,15 +40,19 @@ public class Dades implements InDades, Serializable{
      * Mètode per recuperar articles
      * @return List<String>
      */
-    public List<String> recuperaArticles() {
-        List<String> res = new ArrayList<>();
-        Iterator it = llistaArticles.llista.iterator();
-        int pos = 1;
-        while(it.hasNext()){
-            res.add("\n[" + String.valueOf(pos) + "]" + it.next().toString());
-            pos++;
+    public List<String> recuperaArticles() throws MercatException{
+        if (llistaArticles.isEmpty()){
+            throw new MercatException("No hi ha cap article registrat.");
+        }else{
+            List<String> res = new ArrayList<>();
+            Iterator it = llistaArticles.llista.iterator();
+            int pos = 1;
+            while(it.hasNext()){
+                res.add("\n[" + String.valueOf(pos) + "]" + it.next().toString());
+                pos++;
+            }
+            return res;
         }
-        return res;
     }
 
     /**

@@ -7,10 +7,10 @@ import java.util.Date;
  * Classe abstracta comanda
  */
 public abstract class Comanda implements Serializable {
-    private Article article;
-    private Client client;
-    private int quantitat;
-    private Date dataComanda;
+    protected Article article;
+    protected Client client;
+    protected int quantitat;
+    protected Date dataComanda;
 
     /**
      * Constuctor classe abstracta Comanda
@@ -24,51 +24,6 @@ public abstract class Comanda implements Serializable {
         this.client = client;
         this.quantitat = quantitat;
         this.dataComanda = new Date();
-    }
-
-    /**
-     * Mètode per calcular el preu de la comanda
-     * @return float
-     */
-    public float calcPreu(){
-        return article.getPreu()*quantitat+preuEnviament();
-    }
-
-    /**
-     * Mètode per saber de quin tipus és la comanda
-     * @return String
-     */
-    public abstract String tipusComanda();
-
-    /**
-     * Mètode per saber si la comanda ha estat enviada
-     * @return boolean
-     */
-    public abstract boolean comandaEnviada();
-
-    /**
-     * Mètode per saber si la comanda ha estat rebuda
-     * @return boolean
-     */
-    public abstract boolean comandaRebuda();
-
-    /**
-     * Mètode per saber el preu de l'enviament
-     * @return float
-     */
-    public abstract float preuEnviament();
-
-
-    /**
-     * Mètode toString per imprimir la informació d'una comanda
-     * @return String amb la informació
-     */
-    @Override
-    public String toString() {
-        return "Tipus=" + tipusComanda() + ", Article=" + article.getNom() + ", Client=" +
-                client.getNom() + ", Quantitat=" + getQuantitat() + ", Data de creació=" +
-                getData() + ", Enviat=" + comandaEnviada() + ", Rebuda=" + comandaRebuda() +
-                ", Preu Articles=" + calcPreu() + ", Preu Enviament=" + preuEnviament();
     }
 
     /**
@@ -133,5 +88,50 @@ public abstract class Comanda implements Serializable {
      */
     public void setData(Date data) {
         this.dataComanda = data;
+    }
+    
+    /**
+     * Mètode per calcular el preu de la comanda
+     * @return float
+     */
+    public float calcPreu(){
+        return article.getPreu()*quantitat;
+    }
+
+    /**
+     * Mètode per saber de quin tipus és la comanda
+     * @return String
+     */
+    public abstract String tipusComanda();
+
+    /**
+     * Mètode per saber si la comanda ha estat enviada
+     * @return boolean
+     */
+    public abstract boolean comandaEnviada();
+
+    /**
+     * Mètode per saber si la comanda ha estat rebuda
+     * @return boolean
+     */
+    public abstract boolean comandaRebuda();
+
+    /**
+     * Mètode per saber el preu de l'enviament
+     * @return float
+     */
+    public abstract float preuEnviament();
+
+
+    /**
+     * Mètode toString per imprimir la informació d'una comanda
+     * @return String amb la informació
+     */
+    @Override
+    public String toString() {
+        return "Tipus=" + tipusComanda() + ", Article=" + article.getNom() + ", Client=" +
+                client.getNom() + ", Quantitat=" + getQuantitat() + ", Data de creació=" +
+                getData() + ", Enviat=" + comandaEnviada() + ", Rebuda=" + comandaRebuda() +
+                ", Preu Articles=" + calcPreu() + ", Preu Enviament=" + preuEnviament();
     }
 }

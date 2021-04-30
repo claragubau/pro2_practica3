@@ -1,7 +1,14 @@
 package prog2.vista;
 
 /**
- * Classe Mercat Exception
+ * Classe MercatException
  */
-public class MercatException extends Throwable {
+public class MercatException extends Throwable { /*Throwable -> Exception*/
+    
+    public MercatException(){
+    }
+    
+    public MercatException (String missatge){
+        super(missatge);
+    }
 }

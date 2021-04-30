@@ -1,6 +1,5 @@
 package prog2.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -21,35 +20,6 @@ public abstract class Client implements Serializable {
         this.email = email;
         this.nom = nom;
         this.adreca = adreca;
-    }
-
-    /**
-     * Mètode abstracte per determinar el tipus de client
-     * @return String tipus
-     */
-    public abstract String tipusClient();
-
-    /**
-     * Mètode abstracte per calcular la mensualitat
-     * @return float mensualitat
-     */
-    public abstract float calMensual();
-
-    /**
-     * Mêtode abstracte per calcular el descompte de l'enviament
-     * @return float amb el descompte
-     */
-    public abstract float descompteEnv();
-
-    /**
-     * Mètode toString per imprimir la informació d'un client
-     * @return String amb la informació
-     */
-    @Override
-    public String toString() {
-        return "Tipus = " + tipusClient() + ", Email = " + getEmail() +
-                ", Nom = " + getNom() + ", Adreça = " + getAdreca() +
-                ", Descompte Enviament = " + descompteEnv()*100 + ", Mensualitat = " + calMensual();
     }
 
     /**
@@ -98,5 +68,35 @@ public abstract class Client implements Serializable {
      */
     public void setAdreca(String adreca) {
         this.adreca = adreca;
+    }
+    
+    /**
+     * Mètode abstracte per determinar el tipus de client
+     * @return String tipus
+     */
+    public abstract String tipusClient();
+
+    /**
+     * Mètode abstracte per calcular la mensualitat
+     * @return float mensualitat
+     */
+    public abstract float calcMensual();
+
+    /**
+     * Mêtode abstracte per calcular el descompte de l'enviament
+     * @return float amb el descompte
+     */
+    public abstract float descompteEnv();
+
+    
+    /**
+     * Mètode toString per imprimir la informació d'un client
+     * @return String amb la informació
+     */
+    @Override
+    public String toString() {
+        return "Tipus = " + tipusClient() + ", Email = " + getEmail() +
+                ", Nom = " + getNom() + ", Adreça = " + getAdreca() +
+                ", Descompte Enviament = " + descompteEnv()*100 + ", Mensualitat = " + calcMensual();
     }
 }

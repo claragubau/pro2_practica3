@@ -48,7 +48,7 @@ public class ComandaNormal extends Comanda{
      * @return float
      */
     public float preuEnviament() {
-        return 1;
+        return 1 * (1 - client.descompteEnv());
     }
 
 

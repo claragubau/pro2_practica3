@@ -29,17 +29,6 @@ public class Article implements Serializable {
     }
 
     /**
-     * Mètode per printar la informació de l'article
-     * @return string amb la informació
-     */
-    @Override
-    public String toString() {
-        return "Id = " + getIdentificador() + ", Nom = " + getNom() + ", Preu = "
-                + getPreu() + ", Temps fins enviament = " + getTempsEnviament() +
-                ", Enviament Urgent = " + isEnviamentUrgent();
-    }
-
-    /**
      * Getter identificador
      * @return string identificador
      */
@@ -118,4 +107,16 @@ public class Article implements Serializable {
     public void setEnviamentUrgent(boolean enviamentUrgent) {
         this.enviamentUrgent = enviamentUrgent;
     }
+    
+    /**
+     * Mètode per printar la informació de l'article
+     * @return string amb la informació
+     */
+    @Override
+    public String toString() {
+        return "Id = " + getIdentificador() + ", Nom = " + getNom() + ", Preu = "
+                + getPreu() + ", Temps fins enviament = " + getTempsEnviament() +
+                ", Enviament Urgent = " + isEnviamentUrgent();
+    }
+
 }

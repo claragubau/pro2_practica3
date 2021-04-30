@@ -47,7 +47,7 @@ public class Llista<T> implements Serializable {
      * Mètode per esborrar un element de la llista
      * @param t T
      */
-   public void esborrar(T t) {
+   public void esborrar(T t) { 
        llista.remove(t);
    }
 

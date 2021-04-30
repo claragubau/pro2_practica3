@@ -21,6 +21,7 @@ public class ClientPremium extends Client implements Serializable {
      * Mètode per determinar el tipus de client
      * @return String tipus
      */
+    @Override
     public String tipusClient() {
         return "Premium";
     }
@@ -29,6 +30,7 @@ public class ClientPremium extends Client implements Serializable {
      * Mètode per calcular la mensualitat
      * @return float mensualitat
      */
+    @Override
     public float calcMensual() {
         return 4;
     }
@@ -37,6 +39,7 @@ public class ClientPremium extends Client implements Serializable {
      * Mêtode per calcular el descompte de l'enviament
      * @return float amb el descompte
      */
+    @Override
     public float descompteEnv() {
         return 0.2F;
     }

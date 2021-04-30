@@ -16,13 +16,13 @@ public interface InDades {
 
     public void afegirClient(String email, String nom, String adreca, boolean esPremium) throws MercatException;
 
-    public List<String> recuperaClients();
+    public List<String> recuperaClients() throws MercatException;
 
     public void afegirComanda(int articlePos, int clientPos, int quantitat, boolean esUrgent) throws MercatException; 
     
     public void esborrarComanda(int position) throws MercatException;
     
-    public List<String> recuperaComandes(); 
+    public List<String> recuperaComandes()throws MercatException; 
     
-    public List<String> recuperaComandesUrgents();
+    public List<String> recuperaComandesUrgents() throws MercatException;
 }

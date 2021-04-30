@@ -94,7 +94,7 @@ Crec que no em deixo res :sunflower:
 
 #### Classe Articles :on:
 
-- [ ] Identificador ha de ser únic
+- [:white_check_mark: ] Identificador ha de ser únic
 - [ ] Fer excepcions
 - [ ] Revisar
 
@@ -102,17 +102,17 @@ Crec que no em deixo res :sunflower:
 
 #### Classe Clients :on:
 
-- [ ] Identificar de manera unívoca pel correu electrònic
-- [ ] Falta acabar de mirar si es calculen be les quotes
+- [:white_check_mark:] Identificar de manera unívoca pel correu electrònic
+- [:white_check_mark:] Falta acabar de mirar si es calculen be les quotes
 - [ ] Fer excepcions
 - [ ] Revisar
 
 #### Classe Comandes :on:
 
 - [ ] Guardar/recuperar la data que toqui (crec)
-- [ ] Com gestionar lo del temps fins l'enviament :warning:
-  - [ ] *"cada comanda té un temps fins l'enviament donat per la data de creació de la mateixa i el temps d'enviament de l'article. La comanda urgent triga la meitat d'aquest temps a enviar-se. D'altra banda, un cop enviat, una comanda té un temps fins a la recepció. Es triga 2 dies a rebre la comanda normal i 1 dia la comanda urgent"*
-- [ ] No sé què és el mètode getTime (*"permet obtenir la data associada a un objecte de tipus Date"*)
+- [:white_check_mark:] Com gestionar lo del temps fins l'enviament :warning:
+  - [:white_check_mark:] *"cada comanda té un temps fins l'enviament donat per la data de creació de la mateixa i el temps d'enviament de l'article. La comanda urgent triga la meitat d'aquest temps a enviar-se. D'altra banda, un cop enviat, una comanda té un temps fins a la recepció. Es triga 2 dies a rebre la comanda normal i 1 dia la comanda urgent"*
+- [:white_check_mark:] No sé què és el mètode getTime (*"permet obtenir la data associada a un objecte de tipus Date"*)
 - [ ] Fer excepcions
 
 #### Classe Llista :on:
@@ -132,7 +132,7 @@ Crec que no em deixo res :sunflower:
 
 #### Classe MercatException :question:
 
-Te'n vas encarregar tu a la pràctica anterior, no sé exactament com va
+Te'n vas encarregar tu a la pràctica anterior, no sé exactament com va :white_check_mark:
 
 #### Classe IniciadorMercatUB :white_check_mark:
 

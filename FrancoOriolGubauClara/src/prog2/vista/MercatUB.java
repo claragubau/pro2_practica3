@@ -184,17 +184,17 @@ public class MercatUB {
                         opcioComandes = menuComandes.getOpcio(sc);
                         switch (opcioComandes) {
                             case M_Opcio_1_Afegir_Comanda:
-                                System.out.print("Indica la posició del client a la llista: ");
-                                int clientPos = sc.nextInt();
                                 System.out.print("Indica la posició de l'article a la llista: ");
                                 int articlePos = sc.nextInt();
+                                System.out.print("Indica la posició del client a la llista: ");
+                                int clientPos = sc.nextInt();
                                 System.out.print("Quantitat d'unitats de l'article: ");
                                 int quantitat = sc.nextInt();
                                 System.out.print("Es tracte d'un enviament urgent? (Si/No): ");
                                 String aux = sc.next();
                                 try{ 
                                     boolean enviamentUrgentComanda = controlador.esAfirmatiu(aux);
-                                    controlador.afegirComanda(clientPos, articlePos, quantitat, enviamentUrgentComanda);
+                                    controlador.afegirComanda(articlePos, clientPos, quantitat, enviamentUrgentComanda);
                                 }catch(MercatException e){
                                     System.out.print(e.getMessage());
 
@@ -231,8 +231,8 @@ public class MercatUB {
                     String nomFitxer = sc.nextLine();
                     try {
                         controlador.guardarMercat(nomFitxer);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    } catch (MercatException e) {
+                        System.out.print(e.getMessage());
                     }
                     break;
                 case M_Opcio_5_Carregar_Dades:
@@ -240,10 +240,8 @@ public class MercatUB {
                     nomFitxer = sc.nextLine();
                     try {
                         controlador.carregarMercat(nomFitxer);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                    } catch (MercatException e) {
+                        System.out.print(e.getMessage());
                     }
                     break;
             }

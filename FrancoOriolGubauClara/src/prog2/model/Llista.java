@@ -38,7 +38,7 @@ public class Llista<T> implements Serializable {
     /**
      * Mètode per afegir un element a la llista
      * @param t T
-     * @throws MercatException TODO
+     * @throws MercatException Alguns mètodes de les subclasses 
      */
     public void afegir(T t) throws MercatException {
         llista.add(t);
@@ -47,7 +47,7 @@ public class Llista<T> implements Serializable {
     /**
      * Mètode per esborrar un element de la llista
      * @param t T
-     * @throws prog2.vista.MercatException
+     * @throws prog2.vista.MercatException Si la llista és buida
      */
     public void esborrar(T t) throws MercatException{
         if(this.isEmpty()){
@@ -61,7 +61,7 @@ public class Llista<T> implements Serializable {
      * Mètode per obtenir un element segons la posició
      * @param position int
      * @return element
-     * @throws prog2.vista.MercatException
+     * @throws prog2.vista.MercatException Si la posició no correspon a cap element de la llista o és buida
      */
     public T getAt(int position) throws MercatException{
         if(this.isEmpty()){
@@ -75,7 +75,7 @@ public class Llista<T> implements Serializable {
 
     /**
      * Mètode per buidar la llista
-     * @throws prog2.vista.MercatException
+     * @throws prog2.vista.MercatException Si la llista és buida
      */
     public void clear() throws MercatException{
         if (this.isEmpty()){

@@ -41,6 +41,6 @@ public class ClientPremium extends Client implements Serializable {
      */
     @Override
     public float descompteEnv() {
-        return 0.2F;
+        return 20.0F;
     }
 }

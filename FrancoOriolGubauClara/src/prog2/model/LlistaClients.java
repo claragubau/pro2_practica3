@@ -12,7 +12,7 @@ public class LlistaClients extends Llista<Client> implements Serializable {
     /**
      * Mètode per afegir un client
      * @param client Client
-     * @throws MercatException TODO
+     * @throws MercatException Si el email del client ja ha estat registrat
      */
     @Override
     public void afegir(Client client) throws MercatException {

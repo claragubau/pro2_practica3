@@ -12,11 +12,10 @@ public class LlistaArticles extends Llista<Article> implements Serializable {
     /**
      * Mètode per afegir un article
      * @param article Article
-     * @throws MercatException TODO
+     * @throws MercatException Si el identificador de l'article ja ha estat registrat
      */
     @Override
     public void afegir(Article article) throws MercatException {
-        // comprovar que no hi hagi cap article amb aquell identificador
         if (this.contains(article)){
             throw new MercatException("El Id ja ha estat registrat.\n");
         }else{

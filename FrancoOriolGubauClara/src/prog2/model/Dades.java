@@ -29,7 +29,7 @@ public class Dades implements InDades, Serializable{
      * @param preu float
      * @param temps int
      * @param admetUrgent boolean
-     * @throws MercatException TODO
+     * @throws MercatException La que llença llistaArticles.afegir(...)
      */
     @Override
     public void afegirArticle(String id, String nom, float preu, int temps, boolean admetUrgent) throws MercatException {
@@ -40,7 +40,7 @@ public class Dades implements InDades, Serializable{
     /**
      * Mètode per recuperar articles
      * @return List<String>
-     * @throws prog2.vista.MercatException
+     * @throws prog2.vista.MercatException si la llista és buida
      */
     @Override
     public List<String> recuperaArticles() throws MercatException{
@@ -64,7 +64,7 @@ public class Dades implements InDades, Serializable{
      * @param nom String
      * @param adreca String
      * @param esPremium boolean
-     * @throws MercatException TODO
+     * @throws MercatException la que llença llistaClients.afegir()
      */
     @Override
     public void afegirClient(String email, String nom, String adreca, boolean esPremium) throws MercatException {
@@ -80,7 +80,7 @@ public class Dades implements InDades, Serializable{
     /**
      * Mètode per recuperar clients
      * @return List<String>
-     * @throws prog2.vista.MercatException
+     * @throws MercatException Si la llista esta buida
      */
     @Override
     public List<String> recuperaClients() throws MercatException{
@@ -104,7 +104,7 @@ public class Dades implements InDades, Serializable{
      * @param clientPos int
      * @param quantitat int
      * @param esUrgent boolean
-     * @throws MercatException TODO
+     * @throws MercatException Si la comanda d'un article que no admet enviaments urgents es fa urgent o les que envien llistaArticles.getAt(...) i llistaClients.getAt(...)
      */
     @Override
     public void afegirComanda(int articlePos, int clientPos, int quantitat, boolean esUrgent) throws MercatException {
@@ -128,18 +128,22 @@ public class Dades implements InDades, Serializable{
     /**
      * Mètode per esborrar una comanda
      * @param position posició de la comanada
-     * @throws MercatException TODO
+     * @throws MercatException Si la comanda ja ha estat enviada o bé el de llistaComandes.esborrar(...) o llistaComandes.getAt(...)
      */
     @Override
     public void esborrarComanda(int position) throws MercatException {
         Comanda comanda = llistaComandes.getAt(position);
-        llistaComandes.esborrar(comanda);
+        if(comanda.comandaEnviada()){
+            throw new MercatException("La comanda ja ha estat enviada. No s'ha pogut eliminar.\n");
+        }else{
+            llistaComandes.esborrar(comanda);
+        }
     }
 
     /**
      * Mètode per recuperar una comanda
      * @return List<String>
-     * @throws prog2.vista.MercatException
+     * @throws MercatException Si la llista està buida.
      */
     @Override
     public List<String> recuperaComandes() throws MercatException{
@@ -160,7 +164,7 @@ public class Dades implements InDades, Serializable{
     /**
      * Mètode per recuperar les comandes urgents
      * @return List<String>
-     * @throws prog2.vista.MercatException
+     * @throws prog2.vista.MercatException Si la llista està buida
      */
     @Override
     public List<String> recuperaComandesUrgents() throws MercatException{
@@ -185,24 +189,43 @@ public class Dades implements InDades, Serializable{
         }
     }
 
-    public void guardaDades(String camiDesti) throws MercatException, IOException {
-        File fitxer = new File(camiDesti);
-        FileOutputStream fout = new FileOutputStream(fitxer);
+    /**
+     * Mètode guardaDades que guarda les dades en un fitxer
+     * @param camiDesti
+     * @throws MercatException Si no es pot guardar el fitxer correctament
+     */
+    public void guardaDades(String camiDesti) throws MercatException {
+        try {
+            File fitxer = new File(camiDesti);
+            FileOutputStream fout = new FileOutputStream(fitxer);
 
-        ObjectOutputStream oos = new ObjectOutputStream(fout);
-        oos.writeObject(this);
-        oos.close();
-        fout.close();
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(this);
+            oos.close();
+            fout.close();
+        }catch(IOException e){
+            throw new MercatException("No s'ha pogut guardar el fitxer.\n");
+        }
     }
 
-    public static Dades carregaDades(String camiOrigen) throws MercatException, IOException, ClassNotFoundException {
-        File fitxer = new File(camiOrigen);
-        FileInputStream fin = new FileInputStream(fitxer);
+    /**
+     * Mètode carregaDades que recupera les Dades guardades a un fitxer
+     * @param camiOrigen
+     * @return Dades
+     * @throws MercatException Si no pot recuperar les dades del fitxer o no el troba.
+     */
+    public static Dades carregaDades(String camiOrigen) throws MercatException {
+        try{
+            File fitxer = new File(camiOrigen);
+            FileInputStream fin = new FileInputStream(fitxer);
 
-        ObjectInputStream ois = new ObjectInputStream(fin);
-        Dades dades = (Dades)ois.readObject();
-        ois.close();
-        fin.close();
-        return dades;
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            Dades dades = (Dades)ois.readObject();
+            ois.close();
+            fin.close();
+            return dades;
+        }catch(IOException | ClassNotFoundException e){
+            throw new MercatException("No s'ha pogut carregar el fitxer.\n");
+        }
     }
 }

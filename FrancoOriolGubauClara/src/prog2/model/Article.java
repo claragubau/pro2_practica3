@@ -118,5 +118,4 @@ public class Article implements Serializable {
                 + getPreu() + ", Temps fins enviament = " + getTempsEnviament() +
                 ", Enviament Urgent = " + isEnviamentUrgent();
     }
-
 }

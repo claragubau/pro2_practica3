@@ -97,6 +97,6 @@ public abstract class Client implements Serializable {
     public String toString() {
         return "Tipus = " + tipusClient() + ", Email = " + getEmail() +
                 ", Nom = " + getNom() + ", Adreça = " + getAdreca() +
-                ", Descompte Enviament = " + descompteEnv()*100 + "%, Mensualitat = " + calcMensual();
+                ", Descompte Enviament = " + descompteEnv() + "%, Mensualitat = " + calcMensual();
     }
 }

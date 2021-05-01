@@ -51,7 +51,7 @@ public class Llista<T> implements Serializable {
      */
     public void esborrar(T t) throws MercatException{
         if(this.isEmpty()){
-            throw new MercatException("No hi ha cap element a la llista\n.");
+            throw new MercatException("No hi ha cap element a la llista.\n");
         }else{
             llista.remove(t);
         }
@@ -65,9 +65,9 @@ public class Llista<T> implements Serializable {
      */
     public T getAt(int position) throws MercatException{
         if(this.isEmpty()){
-            throw new MercatException("No hi ha cap element a la llista\n.");
+            throw new MercatException("No hi ha cap element a la llista.\n");
         }else if(position < 0 || position >= getSize()){
-            throw new MercatException("No hi ha cap element en aquesta posició");
+            throw new MercatException("No hi ha cap element en aquesta posició.\n");
         }else{
             return llista.get(position);
         }

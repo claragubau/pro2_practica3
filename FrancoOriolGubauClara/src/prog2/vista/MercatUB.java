@@ -116,11 +116,11 @@ public class MercatUB {
                                 float preuArticle = sc.nextFloat();
                                 System.out.print("Temps d'enviament de l'article (en minuts): ");
                                 int tempsArticle = sc.nextInt();
-                                System.out.print("Es tracta d'un enviament urgent? (si/no) ");
+                                System.out.print("Admet enviaments urgents? (Si/No) ");
                                 String aux = sc.next();
-                                boolean enviamentUrgentArticle;
-                                enviamentUrgentArticle = aux.equals("si");
-                                try {
+                                try{
+                                    boolean enviamentUrgentArticle;
+                                    enviamentUrgentArticle = controlador.esAfirmatiu(aux);
                                     controlador.afegirArticle(idArticle, nomArticle, preuArticle,
                                             tempsArticle, enviamentUrgentArticle);
                                 } catch (MercatException e) {
@@ -154,11 +154,11 @@ public class MercatUB {
                                 String correuElectrClient = sc.nextLine();
                                 System.out.print("Correu postal del client: ");
                                 String correuPostalClient = sc.nextLine();
-                                System.out.print("Es tracta d'un client premium? (si/no) ");
+                                System.out.print("Es tracta d'un client premium? (Si/No): ");
                                 String aux = sc.next();
-                                boolean esPremium;
-                                esPremium = aux.equals("si");
-                                try {
+                                try{
+                                    boolean esPremium;
+                                    esPremium = controlador.esAfirmatiu(aux);
                                     controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, esPremium);
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());
@@ -190,15 +190,24 @@ public class MercatUB {
                                 int articlePos = sc.nextInt();
                                 System.out.print("Quantitat d'unitats de l'article: ");
                                 int quantitat = sc.nextInt();
-                                System.out.print("Es tracta d'una comanda urgent? (si/no) ");
+                                System.out.print("Es tracte d'un enviament urgent? (Si/No): ");
                                 String aux = sc.next();
-                                boolean enviamentUrgentArticle = aux.equals("si");;
-                                controlador.afegirComanda(clientPos, articlePos, quantitat, enviamentUrgentArticle);
+                                try{ 
+                                    boolean enviamentUrgentComanda = controlador.esAfirmatiu(aux);
+                                    controlador.afegirComanda(clientPos, articlePos, quantitat, enviamentUrgentComanda);
+                                }catch(MercatException e){
+                                    System.out.print(e.getMessage());
+
+                                }
                                 break;
                             case M_Opcio_2_Esborrar_Comanda:
                                 System.out.print("Indica la posició de la comanda que vols esborrar: ");
                                 int pos = sc.nextInt();
-                                controlador.esborrarComanda(pos);
+                                try{
+                                    controlador.esborrarComanda(pos);
+                                }catch(MercatException e){
+                                    System.out.print(e.getMessage());
+                                }
                                 break;
                             case M_Opcio_3_Visualitzar_Comanda:
                                 try {
@@ -231,7 +240,6 @@ public class MercatUB {
                     nomFitxer = sc.nextLine();
                     try {
                         controlador.carregarMercat(nomFitxer);
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (ClassNotFoundException e) {

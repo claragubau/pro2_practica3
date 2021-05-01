@@ -18,7 +18,7 @@ public class LlistaArticles extends Llista<Article> implements Serializable {
     public void afegir(Article article) throws MercatException {
         // comprovar que no hi hagi cap article amb aquell identificador
         if (this.contains(article)){
-            throw new MercatException("El Id ja ha estat registrat.");
+            throw new MercatException("El Id ja ha estat registrat.\n");
         }else{
             llista.add(article);
         }

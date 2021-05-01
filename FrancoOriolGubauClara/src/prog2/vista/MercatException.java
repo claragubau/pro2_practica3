@@ -5,9 +5,10 @@ package prog2.vista;
  */
 public class MercatException extends Throwable { /*Throwable -> Exception*/
     
-    public MercatException(){
-    }
-    
+    /**
+     * Constructor de MercatException que rep com a parametre el missatge de l'excepció
+     * @param missatge 
+     */
     public MercatException (String missatge){
         super(missatge);
     }

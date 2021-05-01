@@ -17,7 +17,7 @@ public class LlistaClients extends Llista<Client> implements Serializable {
     @Override
     public void afegir(Client client) throws MercatException {
         if (this.contains(client)){
-            throw new MercatException("El email del client ja figura dins el registre.");
+            throw new MercatException("El email del client ja figura dins el registre.\n");
         }else{
             llista.add(client);
         }

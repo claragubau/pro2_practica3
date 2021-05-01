@@ -45,7 +45,7 @@ public class Dades implements InDades, Serializable{
     @Override
     public List<String> recuperaArticles() throws MercatException{
         if (llistaArticles.isEmpty()){
-            throw new MercatException("No hi ha cap article registrat.");
+            throw new MercatException("No hi ha cap article registrat.\n");
         }else{
             List<String> res = new ArrayList<>();
             Iterator it = llistaArticles.llista.iterator();

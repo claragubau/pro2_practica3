@@ -27,7 +27,7 @@ public class Controlador {
     public void afegirArticle(String id, String nom, float preu,
                               int tempsEnviament, boolean enviamentUrgent) throws MercatException {
         if (preu <= 0){
-            throw new MercatException("El preu ha de ser un valor positiu. No ens podem permetre perdues.");
+            throw new MercatException("El preu ha de ser un valor positiu. No ens podem permetre perdues.\n");
         }else{
             dades.afegirArticle(id, nom, preu, tempsEnviament, enviamentUrgent);
         }
@@ -102,12 +102,41 @@ public class Controlador {
     public void esborrarComanda(int position) throws MercatException {
         dades.esborrarComanda(position-1);
     }
-
+    
+    /**
+     * Metode guardarMercat per guardar les dades
+     * @param camiDesti
+     * @throws IOException
+     * @throws MercatException 
+     */
     public void guardarMercat(String camiDesti) throws IOException, MercatException {
         dades.guardaDades(camiDesti);
     }
-
+    
+    /**
+     * Metode carregarMercat per recuperar les dades
+     * @param camiOrigen
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws MercatException 
+     */
     public void carregarMercat(String camiOrigen) throws IOException, ClassNotFoundException, MercatException {
-        dades = dades.carregaDades(camiOrigen);
+        dades = Dades.carregaDades(camiOrigen);
+    }
+    
+    /**
+     * Mètode esAfirmatiu per comprovar si la resposta és 'Si' o 'No'
+     * @param resposta
+     * @return
+     * @throws MercatException 
+     */
+    public boolean esAfirmatiu (String resposta) throws MercatException{
+        if(resposta.equals("Si")){
+            return true;
+        }else if(resposta.equals("No")){
+            return false;
+        }else{
+            throw new MercatException("La resposta ha de ser 'Si' o 'No'.\n");
+        }
     }
 }

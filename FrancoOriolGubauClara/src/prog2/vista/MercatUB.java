@@ -129,7 +129,7 @@ public class MercatUB {
                                 break;
                             case M_Opcio_2_Visualitzar_Article:
                                 try {
-                                    System.out.print(controlador.visualitzarArticle());
+                                    System.out.print(controlador.visualitzarArticles());
                                     System.out.print("\n");
                                 } catch (MercatException e) {
                                     System.out.print(e.getMessage());

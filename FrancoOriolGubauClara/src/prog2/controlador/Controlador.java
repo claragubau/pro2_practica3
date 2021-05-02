@@ -40,7 +40,7 @@ public class Controlador {
      * @return string
      * @throws MercatException La que llença dades.recuperaArticles()
      */
-    public List<String> visualitzarArticle() throws MercatException{
+    public List<String> visualitzarArticles() throws MercatException{
         return dades.recuperaArticles();
     }
 

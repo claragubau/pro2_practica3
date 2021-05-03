@@ -176,8 +176,9 @@ public class Dades implements InDades, Serializable{
             int pos = 1;
             while(it.hasNext()){
                 Comanda cmd = (Comanda) it.next();
-                if(cmd.tipusComanda().equals("Urgent")){
-                    res.add("\n[" + String.valueOf(pos) + "]" + cmd.toString());
+                if(cmd instanceof ComandaUrgent){
+                    ComandaUrgent comandaUrgent = (ComandaUrgent) cmd;
+                    res.add("\n[" + String.valueOf(pos) + "]" + comandaUrgent.toString());
                     pos++;
                 }
             }
@@ -203,6 +204,8 @@ public class Dades implements InDades, Serializable{
             oos.writeObject(this);
             oos.close();
             fout.close();
+        }catch(FileNotFoundException e){
+            throw new MercatException("No s'ha pogut trobar el fitxer.\n");
         }catch(IOException e){
             throw new MercatException("No s'ha pogut guardar el fitxer.\n");
         }
@@ -224,6 +227,8 @@ public class Dades implements InDades, Serializable{
             ois.close();
             fin.close();
             return dades;
+        }catch(FileNotFoundException e){
+            throw new MercatException("No s'ha pogut trobar el fitxer.\n");
         }catch(IOException | ClassNotFoundException e){
             throw new MercatException("No s'ha pogut carregar el fitxer.\n");
         }

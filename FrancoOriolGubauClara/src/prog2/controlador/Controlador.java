@@ -126,20 +126,4 @@ public class Controlador {
     public void carregarMercat(String camiOrigen) throws MercatException {
         dades = Dades.carregaDades(camiOrigen);
     }
-    
-    /**
-     * Mètode esAfirmatiu per comprovar si la resposta és 'Si' o 'No'
-     * @param resposta
-     * @return un booleà depenent de si la resposta és afirmativa o No
-     * @throws MercatException en cas que la resposta no sigui ni 'Si' ni 'No'.
-     */
-    public boolean esAfirmatiu (String resposta) throws MercatException{
-        if(resposta.equals("Si")){
-            return true;
-        }else if(resposta.equals("No")){
-            return false;
-        }else{
-            throw new MercatException("La resposta ha de ser 'Si' o 'No'.\n");
-        }
-    }
 }

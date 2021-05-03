@@ -19,11 +19,7 @@ public class MercatUB {
         // Creem un objecte per llegir l'input des del teclat
         Scanner sc = new Scanner(System.in);
         // Cridem a la funció que gestiona el menú
-        try {
-            gestioMenu(sc);
-        } catch (MercatException e) {
-            e.printStackTrace();
-        }
+        gestioMenu(sc);
     }
 
     private enum OpcionsMenu{
@@ -71,7 +67,7 @@ public class MercatUB {
     private enum OpcionsMenuComandes{
         M_Opcio_1_Afegir_Comanda,
         M_Opcio_2_Esborrar_Comanda,
-        M_Opcio_3_Visualitzar_Comanda,
+        M_Opcio_3_Visualitzar_Comandes,
         M_Opcio_4_Visualitzar_Comandes_Urgents,
         M_Opcio_5_Sortir
     }
@@ -87,7 +83,7 @@ public class MercatUB {
     /**
      * Mètode que implementa el menú d'opcions i la lògica de l'aplicació
      */
-    private void gestioMenu(Scanner sc) throws MercatException{
+    private void gestioMenu(Scanner sc){
         Menu<OpcionsMenu> menuMercat = new Menu<>("Menu del mercat", OpcionsMenu.values());
 
         menuMercat.setDescripcions(descMenu);
@@ -108,32 +104,10 @@ public class MercatUB {
                         opcioArticles = menuArticles.getOpcio(sc);
                         switch (opcioArticles) {
                             case M_Opcio_1_Afegir_Article:
-                                System.out.print("Identificador de l'article: ");
-                                String idArticle = sc.nextLine();
-                                System.out.print("Nom de l'article: ");
-                                String nomArticle = sc.nextLine();
-                                System.out.print("Preu article: ");
-                                float preuArticle = sc.nextFloat();
-                                System.out.print("Temps d'enviament de l'article (en minuts): ");
-                                int tempsArticle = sc.nextInt();
-                                System.out.print("Admet enviaments urgents? (Si/No) ");
-                                String aux = sc.next();
-                                try{
-                                    boolean enviamentUrgentArticle;
-                                    enviamentUrgentArticle = controlador.esAfirmatiu(aux);
-                                    controlador.afegirArticle(idArticle, nomArticle, preuArticle,
-                                            tempsArticle, enviamentUrgentArticle);
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                                afegirArticle(sc);
                                 break;
                             case M_Opcio_2_Visualitzar_Article:
-                                try {
-                                    System.out.print(controlador.visualitzarArticles());
-                                    System.out.print("\n");
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                                visualitzarArticle();
                                 break;
                         }
                     } while (opcioArticles != OpcionsMenuArticles.M_Opcio_3_Sortir);
@@ -148,28 +122,10 @@ public class MercatUB {
                         opcioClients = menuClients.getOpcio(sc);
                         switch (opcioClients) {
                             case M_Opcio_1_Afegir_Client:
-                                System.out.print("Nom del client: ");
-                                String nomClient = sc.nextLine();
-                                System.out.print("Correu electrònic del client: ");
-                                String correuElectrClient = sc.nextLine();
-                                System.out.print("Correu postal del client: ");
-                                String correuPostalClient = sc.nextLine();
-                                System.out.print("Es tracta d'un client premium? (Si/No): ");
-                                String aux = sc.next();
-                                try{
-                                    boolean esPremium;
-                                    esPremium = controlador.esAfirmatiu(aux);
-                                    controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, esPremium);
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                                afegirClient(sc);
                                 break;
                             case M_Opcio_2_Visualitzar_Clients:
-                                try {
-                                    System.out.println(controlador.visualitzarClients());
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                                visualitzarClient();
                                 break;
                         }
                     } while (opcioClients != OpcionsMenuClients.M_Opcio_3_Sortir);
@@ -184,67 +140,202 @@ public class MercatUB {
                         opcioComandes = menuComandes.getOpcio(sc);
                         switch (opcioComandes) {
                             case M_Opcio_1_Afegir_Comanda:
-                                System.out.print("Indica la posició de l'article a la llista: ");
-                                int articlePos = sc.nextInt();
-                                System.out.print("Indica la posició del client a la llista: ");
-                                int clientPos = sc.nextInt();
-                                System.out.print("Quantitat d'unitats de l'article: ");
-                                int quantitat = sc.nextInt();
-                                System.out.print("Es tracte d'un enviament urgent? (Si/No): ");
-                                String aux = sc.next();
-                                try{ 
-                                    boolean enviamentUrgentComanda = controlador.esAfirmatiu(aux);
-                                    controlador.afegirComanda(articlePos, clientPos, quantitat, enviamentUrgentComanda);
-                                }catch(MercatException e){
-                                    System.out.print(e.getMessage());
-
-                                }
+                                afegirComanda(sc);
                                 break;
                             case M_Opcio_2_Esborrar_Comanda:
-                                System.out.print("Indica la posició de la comanda que vols esborrar: ");
-                                int pos = sc.nextInt();
-                                try{
-                                    controlador.esborrarComanda(pos);
-                                }catch(MercatException e){
-                                    System.out.print(e.getMessage());
-                                }
+                                esborrarComanda(sc);
                                 break;
-                            case M_Opcio_3_Visualitzar_Comanda:
-                                try {
-                                    System.out.println(controlador.visualitzarComandes());
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                            case M_Opcio_3_Visualitzar_Comandes:
+                                visualitzarComandes();
                                 break;
                             case M_Opcio_4_Visualitzar_Comandes_Urgents:
-                                try {
-                                    System.out.println(controlador.visualitzarComandesUrgents());
-                                } catch (MercatException e) {
-                                    System.out.print(e.getMessage());
-                                }
+                                visualitzarComandesUrgents();
                                 break;
                         }
                     } while (opcioComandes != OpcionsMenuComandes.M_Opcio_5_Sortir);
                     break;
                 case M_Opcio_4_Guardar_Dades:
-                    System.out.print("Nom del fitxer on es volen guardar les dades: ");
-                    String nomFitxer = sc.nextLine();
-                    try {
-                        controlador.guardarMercat(nomFitxer);
-                    } catch (MercatException e) {
-                        System.out.print(e.getMessage());
-                    }
+                    guardarDades(sc);
                     break;
                 case M_Opcio_5_Carregar_Dades:
-                    System.out.print("Nom del fitxer on hi ha les dades: ");
-                    nomFitxer = sc.nextLine();
-                    try {
-                        controlador.carregarMercat(nomFitxer);
-                    } catch (MercatException e) {
-                        System.out.print(e.getMessage());
-                    }
+                    carregarDades(sc);
                     break;
             }
         }while(opcioMenu != OpcionsMenu.M_Opcio_6_Sortir);
+    }
+    
+    /**
+     * Mètode afegirArticle() de suport per demanar la informació i afegir un article (Opció 1.1 del menú).
+     * @param sc 
+     */
+    private void afegirArticle(Scanner sc){
+        System.out.print("Identificador de l'article: ");
+        String idArticle = sc.nextLine();
+        System.out.print("Nom de l'article: ");
+        String nomArticle = sc.nextLine();
+        System.out.print("Preu article: ");
+        float preuArticle = sc.nextFloat();
+        System.out.print("Temps d'enviament de l'article (en minuts): ");
+        int tempsArticle = sc.nextInt();
+        System.out.print("Admet enviaments urgents? (Si/No) ");
+        String aux = sc.next();
+        try{
+            boolean enviamentUrgentArticle;
+            enviamentUrgentArticle = esAfirmatiu(aux);
+            controlador.afegirArticle(idArticle, nomArticle, preuArticle,
+                        tempsArticle, enviamentUrgentArticle);
+        } catch (MercatException e) {
+                System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode visualitzarArticle() de suport per visualitzar el llistat d'articles (Opció 1.2 del menú).
+     * @param sc 
+     */
+    private void visualitzarArticle(){
+        try {
+            System.out.print(controlador.visualitzarArticles());
+            System.out.print("\n");
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode afegirClient() de suport per demanar la informació i afegir un client (Opció 2.1 del menú).
+     * @param sc 
+     */
+    private void afegirClient(Scanner sc){
+        System.out.print("Nom del client: ");
+        String nomClient = sc.nextLine();
+        System.out.print("Correu electrònic del client: ");
+        String correuElectrClient = sc.nextLine();
+        System.out.print("Correu postal del client: ");
+        String correuPostalClient = sc.nextLine();
+        System.out.print("Es tracta d'un client premium? (Si/No): ");
+        String aux = sc.next();
+        try{
+            boolean esPremium;
+            esPremium = esAfirmatiu(aux);
+            controlador.afegirClient(nomClient, correuElectrClient, correuPostalClient, esPremium);
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode visualitzarArticle() de suport per visualitzar el llistat de clients (Opció 2.2 del menú).
+     * @param sc 
+     */
+    private void visualitzarClient(){
+        try {
+            System.out.println(controlador.visualitzarClients());
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode afegirComanda() de suport per demanar la informació i afegir una comanda (Opció 3.1 del menú).
+     * @param sc 
+     */
+    private void afegirComanda(Scanner sc){
+        System.out.print("Indica la posició de l'article a la llista: ");
+        int articlePos = sc.nextInt();
+        System.out.print("Indica la posició del client a la llista: ");
+        int clientPos = sc.nextInt();
+        System.out.print("Quantitat d'unitats de l'article: ");
+        int quantitat = sc.nextInt();
+        System.out.print("Es tracte d'un enviament urgent? (Si/No): ");
+        String aux = sc.next();
+        try{ 
+            boolean enviamentUrgentComanda = esAfirmatiu(aux);
+            controlador.afegirComanda(articlePos, clientPos, quantitat, enviamentUrgentComanda);
+        }catch(MercatException e){
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode esborrarComanda() de suport per demanar la informació necessària i esborrar una comanda (Opció 3.2 del menú).
+     * @param sc 
+     */
+    private void esborrarComanda(Scanner sc){
+        System.out.print("Indica la posició de la comanda que vols esborrar: ");
+        int pos = sc.nextInt();
+        try{
+            controlador.esborrarComanda(pos);
+        }catch(MercatException e){
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode visualitzarComandes() de suport per visualitzar el llistat de comandes (Opció 3.3 del menú).
+     * @param sc 
+     */
+    private void visualitzarComandes(){
+        try {
+            System.out.println(controlador.visualitzarComandes());
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode visualitzarComandesUrgents() de suport per demanar visualitzar el llistat de comandes Urgents (Opció 3.4 del menú).
+     * @param sc 
+     */
+    private void visualitzarComandesUrgents(){
+        try {
+            System.out.println(controlador.visualitzarComandesUrgents());
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode de suport guardarDades() per guardar les dades (Opció 4 del menú)
+     * @param sc 
+     */
+    private void guardarDades(Scanner sc){
+        System.out.print("Nom del fitxer on es volen guardar les dades: ");
+        String nomFitxer = sc.nextLine();
+        try {
+            controlador.guardarMercat(nomFitxer);
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    /**
+     * Mètode carregarDades() de suport per recuperar les dades (Opció 5 del menú)
+     * @param sc 
+     */
+    private void carregarDades(Scanner sc){
+        System.out.print("Nom del fitxer on hi ha les dades: ");
+        String nomFitxer = sc.nextLine();
+        try {
+            controlador.carregarMercat(nomFitxer);
+        } catch (MercatException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+     /**
+     * Mètode de suport esAfirmatiu() per comprovar si la resposta és 'Si' o 'No'
+     * @param resposta
+     * @return un booleà depenent de si la resposta és afirmativa o No
+     * @throws MercatException en cas que la resposta no sigui ni 'Si' ni 'No'.
+     */
+    public boolean esAfirmatiu (String resposta) throws MercatException{
+        if(resposta.equals("Si")){
+            return true;
+        }else if(resposta.equals("No")){
+            return false;
+        }else{
+            throw new MercatException("La resposta ha de ser 'Si' o 'No'.\n");
+        }
     }
 }
